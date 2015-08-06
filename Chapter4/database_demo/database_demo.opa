@@ -6,7 +6,7 @@ function action(_) {
 function page() {
 	Db.remove(@/counter)
 	<h1 id="msg">Hello</h1>
-	<a onclick={action}>Click sur moi, je le vaux bien!!!!!!</a>
+	<a onclick={action}>Click</a>
 }
 Server.start(
 	Server.http, // default port is 8080
