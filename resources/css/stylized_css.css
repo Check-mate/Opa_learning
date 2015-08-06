@@ -1,0 +1,59 @@
+#logo {
+	 background: url("/resources/img/opa-logo.png") no-repeat scroll 0 0 transparent;
+	 height: 201px;
+	 margin: auto;
+ 	/** width: 0px; */
+}
+
+#myself {
+	width: 50px
+}
+
+#conversation {
+ 	overflow: auto;
+ 	position: absolute;
+	margin: auto;
+	bottom: 48px;
+ 	top: 271px;
+ 	left: 0;
+ 	right: 0;
+}
+
+.line {
+ 	border-bottom: 2px solid #ddd;
+ 	padding-bottom: 8px;
+ 	margin-bottom: 8px !important;
+}
+
+.user, .message {
+ 	padding-top: 8px;
+}
+
+.userpic {
+ 	background: url("/resources/img/user.png") no-repeat 0 0;
+ 	height: 40px;
+ 	width: 40px;
+}
+
+.user {
+ 	color: #000;
+ 	font-weight: bold;
+}
+
+.message {
+ 	color:#666;
+}
+
+#entry {
+ 	margin-top: 6px;
+}
+
+#hello {
+	top: 202px;
+	background:#eee;
+}
+
+#footer {
+	top: 222px;
+	background:#eee;
+}
