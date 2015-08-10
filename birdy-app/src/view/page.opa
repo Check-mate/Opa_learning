@@ -40,7 +40,7 @@ module Page {
       <div class="hero-unit">
         Page content goes here...
       </div>
-    page_template("Default page", content)
+    page_template("Default page", content, <></>)
   }
 
 }

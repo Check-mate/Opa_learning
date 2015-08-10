@@ -40,7 +40,7 @@ module  Signup {
 			validator: {equals: fld_passwd, err_msg: <>Your password do not match.</>}
 		})
 
-	private client function signup() {
+	private client function signup(_) {
 
 		email = Field.get_value(fld_email) ? error("Cannot read form email")
 		username = Field.get_value(fld_username) ? error("Cannot read form name")
@@ -58,7 +58,7 @@ module  Signup {
 
 	function modal_window_html() {
 
-		form = Form.make(signup, {})
+		form = Form.make(signup(_), {})
 		fld = Field.render(form, _)
 		form_body = 
 			<>
