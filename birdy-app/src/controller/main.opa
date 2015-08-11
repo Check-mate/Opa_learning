@@ -1,15 +1,19 @@
 module Controller {
 
   // URL dispatcher of your application; add URL handling as needed
-  dispatcher = {
-    parser {
-    case (.*) : Page.main_page()
+  function dispatcher(Uri.relative url) {
+    match(url) {
+      case {path: ["activation", activation_code] ...}:
+        Signup.activate_user(activation_code)
+      default:
+        Page.main_page()
+    
     }
   }
 
-}
+  resources = @static_resource_directory("resources")
 
-resources = @static_resource_directory("resources")
+}
 
 Server.start(Server.http, [
   { register:
@@ -19,5 +23,5 @@ Server.start(Server.http, [
     ]
   },
   { ~resources },
-  { custom: Controller.dispatcher }
+  { dispatch: dispatcher }
 ])

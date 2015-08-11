@@ -37,6 +37,19 @@ module User {
 		SmtpClient.try_send_async(options, content, transporter, continuation)
 	}
 
+	exposed function outcome activate_account(activation_code) {
+		user = /birdy/users[status == ~{activation_code}]
+			|> DbSet.iterator
+			|> Iter.to_list
+			|> List.head_opt
+		match (user) {
+			case {none}: {failure}
+			case {some: user}:
+				/birdy/users/[{username: user.username}] <- {user with status: {active}}
+				{success}
+		}
+	}
+
 	exposed function outcome register(user) {
 		activation_code = Random.string(15)
 		status = 

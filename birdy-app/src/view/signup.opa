@@ -56,6 +56,23 @@ module  Signup {
 			}
 	}
 
+	function activate_user(activation_code) {
+		notice = 
+			match (User.activate_account(activation_code)) {
+				case {success: _}:
+					Page.alert("Your account is activated now.", "success") <+>
+					<div class="hero-unit">
+						<div class="well form-wrap">
+							{Signin.form()}
+						</div>
+					</div>
+				case {failure:_}:
+				Page.alert("Activation code is invalid.", "error") <+>
+				Page.main_page_content
+			}
+		Page.page_template("Account activation", <></>, notice)
+	}
+
 	function modal_window_html() {
 
 		form = Form.make(signup(_), {})
