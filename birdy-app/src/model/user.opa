@@ -1,8 +1,12 @@
+
 import stdlib.web.mail.smtp.client
 
-abstract type User.name = string
-abstract type User.status = {active} or {string activation_code}
-abstract type User.info = 
+
+type User.name = string
+
+type User.status = {active} or {string activation_code}
+
+type User.info = 
 { 	Email.email email,
 	string username,
 	string passwd,
@@ -11,7 +15,39 @@ abstract type User.info =
 	list(Topic.t) follow_topics
 }
 
+private UserContext.t(User.logged) logged_user = UserContext.make({guest})
+
+type User.t = { Email.email email, User.name username}
+
+/** 
+* model/user.opa : User module
+*/
+
 module User {
+
+	@xmlizer(User.t) function user_to_xml(user) {
+		<>{user.username}</>
+	}
+
+	@stringifier(User.t) function user_to_string(user) {
+		user.username
+	}
+
+	function add_user(User.info user) {
+		/birdy/users[username == user.username] <- user
+	}
+
+	function string get_name(User.t user) {
+		user.username
+	}
+
+	function User.logged get_logged_user() {
+		UserContext.get(logged_user)
+	}
+
+	function logout() {
+		UserContext.set(logged_user, {guest})
+	}
 
 	private function send_registration_email(args) {
 		from = Email.of_string("no-reply@{Data.main_host}")
@@ -38,20 +74,21 @@ module User {
 	}
 
 	exposed function outcome activate_account(activation_code) {
+		// search account with inactive status and match the activation_code given in parameter with those accounts
 		user = /birdy/users[status == ~{activation_code}]
 			|> DbSet.iterator
 			|> Iter.to_list
 			|> List.head_opt
 		match (user) {
 			case {none}: {failure}
-			case {some: user}:
-				/birdy/users/[{username: user.username}] <- {user with status: {active}}
+			case {some: user}: 
+				add_user({user with status: {active}})
 				{success}
-		}
+			}
 	}
 
 	exposed function outcome register(user) {
-		activation_code = Random.string(15)
+		activation_code = Random.string(30)
 		status = 
 		#<Ifstatic:NO_ACTIVATION_MAIL>
 		{active}
@@ -68,10 +105,9 @@ module User {
 				~status
 			}
 		x = ?/birdy/users[{username: user.username}]
-	
 		match(x) {
 			case {none}:
-				/birdy/users[{username: user.username}] <- user
+				/birdy/users[{username: user.username}] = user
 				#<Ifstatic:NO_ACTIVATION_MAIL>
 				void
 				#<Else>

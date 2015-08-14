@@ -1,5 +1,32 @@
 #main {
 	margin-top: 50px;
+	text-align: center;
+}
+
+.mlstate {
+	background-image: url("/resources/img/app-icon.png");
+	width: 80px;
+	height: 80px;
+	text-align: center;
+	position: relative;
+	margin: 40px auto 0px;
+}
+
+.background-pic {
+	background-image: url("/resources/img/bg-pattern-alpha.png");
+	background-color: rgb(0, 115, 228);
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	right: 0px;
+	overflow-y: auto;
+	background-size: 300px 225px; 
+}
+
+.birdy-icon {
+	width: 80px;
+	height: 80px;
 }
 
 textarea {

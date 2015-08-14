@@ -19,7 +19,7 @@ ifdef SystemRoot
 	RMFILE = del /s /q
 else
 	RM = rm -rf
-	RMFILE = rm
+	RMFILE = rm -f
 endif
 
 # Hack to bypass the lack of "make -p" on Windows:

@@ -1,8 +1,4 @@
-database birdy {
-  // database declarations go here
-  	User.info /users[{username}]
-	
-}
+database User.info /birdy/users[{username}]
 
 module Data {
 

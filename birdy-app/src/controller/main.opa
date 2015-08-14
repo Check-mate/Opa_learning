@@ -1,4 +1,10 @@
+/** 
+* controller/main.opa: Controller module
+*/
+
 module Controller {
+
+  resources = @static_resource_directory("resources")
 
   // URL dispatcher of your application; add URL handling as needed
   function dispatcher(Uri.relative url) {
@@ -11,8 +17,6 @@ module Controller {
     }
   }
 
-  resources = @static_resource_directory("resources")
-
 }
 
 Server.start(Server.http, [
@@ -22,6 +26,6 @@ Server.start(Server.http, [
       { css: [ "/resources/css/style.css"] }
     ]
   },
-  { ~resources },
-  { dispatch: dispatcher }
+  { resources: Controller.resources },
+  { dispatch: Controller.dispatcher }
 ])
