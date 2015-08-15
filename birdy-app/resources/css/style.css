@@ -12,6 +12,27 @@
 	margin: 40px auto 0px;
 }
 
+.home-page h1 {
+  font-size: 64px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin-top: 30px;
+  margin-bottom: 0;
+  color: #ffffff;
+}
+
+.home-page h2 {
+	font-size: 29px;
+  	color: #ffffff;
+}
+
+.home-page h3 {
+	font-size: 16px;
+	color: #ffffff;
+}
+
+/* #8AA2B7 */
+
 .background-pic {
 	background-image: url("/resources/img/bg-pattern-alpha.png");
 	background-color: rgb(0, 115, 228);

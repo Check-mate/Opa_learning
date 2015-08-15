@@ -1,13 +1,13 @@
 private fld_username =
 	Field.text_field({Field.new with 
 			label: "Username",
-			required: {with_msg: <>Enter your username.</>}
+			required: {with_msg: <></>}
 		})
 
 private fld_passwd =
 	Field.passwd_field({Field.new with 
 			label: "Password",
-			required: {with_msg: <>Enter your password.</>}
+			required: {with_msg: <></>}
 		})
 
 /** 
@@ -17,6 +17,11 @@ private fld_passwd =
 module  Signin {
 	
 	window_id = "signin"
+
+	signin_btn_html =
+		<a class="btn btn-large btn-success" data-toggle=modal href="#{window_id}">
+			Login
+		</a>
 
 	private function register(_) {
 		Modal.hide(#{window_id});

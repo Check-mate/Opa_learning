@@ -26,7 +26,7 @@ module Page {
   }
  
   function alert(message, cl) {
-    <div class="alert alert-{cl}">
+    <div class="alert alert-danger">
       <button type="button" class="close" data-dismiss="alert">x</button>
       {message}
     </div>
@@ -35,12 +35,11 @@ module Page {
   // I) The web program begin here.
   function main_page() {
       main_page_content = 
-        <div class=hero-unit>
-          <div class=birdy-icon/>
+        <div class=home-page>
           <h1>Birdy</h1>
-            <h2>Micro-blogging platform. <br/>Built with <a href="http://opalang.org">Opa.</a>
-            </h2>
-          <p>{Signup.signup_btn_html}</p>
+            <h2>Micro-blogging platform. <br/>Built with <a target="_blank" href="http://opalang.org">Opa.</a></h2>
+              <h3>By <a target="_blank" href="https://github.com/Check-mate">Lahmar Kamel.</a></h3>
+          <p>{Signin.signin_btn_html}</p>
         </div>
       page_template("Birdy", main_page_content, <></>)
     }

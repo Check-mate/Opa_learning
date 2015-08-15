@@ -1,20 +1,17 @@
-signinup_btn_html = 
-	<ul class="nav pull-right">
-		<li>
-			<a data-toggle=modal href="#{Signin.window_id}">Sign in</a>
-		</li>
-	</ul>
-
 /** 
 * view/topbar.opa: Topbar module
 */
 
 module  Topbar {
 
+signinup_btn_html = 
+	<ul class="nav pull-right">
+		<li>
+			<a data-toggle=modal href="#{Signup.window_id}">Sign up</a>
+		</li>
+	</ul>
+
 	function html() {
-		// <a class=brand href="/">
-		// Birdy
-		// </a> <+>
 		MsgUI.html() <+>
 		user_menu()
 	}
