@@ -21,12 +21,12 @@ module Page {
             {Signup.modal_window_html()}
             {MsgUI.modal_window_html()}
           </div>
-       </div> 
+       </div>
     Resource.page(title, html)
   }
- 
+
   function alert(message, cl) {
-    <div class="alert alert-danger">
+    <div class="alert alert-alert">
       <button type="button" class="close" data-dismiss="alert">x</button>
       {message}
     </div>

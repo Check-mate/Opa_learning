@@ -73,7 +73,6 @@ module  Signup {
 	}
 
 	function modal_window_html() {
-
 		form = Form.make(signup(_), {})
 		fld = Field.render(form, _)
 		form_body = 

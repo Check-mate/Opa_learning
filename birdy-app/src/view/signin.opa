@@ -1,22 +1,22 @@
-private fld_username =
-	Field.text_field({Field.new with 
-			label: "Username",
-			required: {with_msg: <></>}
-		})
-
-private fld_passwd =
-	Field.passwd_field({Field.new with 
-			label: "Password",
-			required: {with_msg: <></>}
-		})
-
-/** 
+/**
 * view/signin.opa: Signin page module 
 */
 
 module  Signin {
-	
+
 	window_id = "signin"
+
+	private fld_username =
+	Field.text_field({Field.new with
+			label: "Username",
+			required: {with_msg: <></>}
+		})
+
+	private fld_passwd =
+	Field.passwd_field({Field.new with 
+			label: "Password",
+			required: {with_msg: <></>}
+		})
 
 	signin_btn_html =
 		<a class="btn btn-large btn-success" data-toggle=modal href="#{window_id}">
@@ -54,7 +54,7 @@ module  Signin {
 				<legend>Sign in and start messaging</legend>
 				{fld(fld_username)}
 				{fld(fld_passwd)}
-				<a href="#" class="btn btn-large btn-primary" onclick={Form.submit_action(form)}>Sign in</>
+				<a href="#" class="btn btn-large btn-primary" onclick={Form.submit_action(form)}>Login</>
 			</div>
 		Form.render(form, form_body)
 	}
@@ -73,7 +73,7 @@ module  Signin {
 			</>
 		win_body = Form.render(form, form_body)
 		win_footer = 
-			<a href="#" class="btn btn-primary btn-large" onclick={Form.submit_action(form)}>Sign in</a>
-		Modal.make(window_id, <>Sign in</>, win_body, win_footer, Modal.default_options)
+			<a href="#" class="btn btn-primary btn-large" onclick={Form.submit_action(form)}>Login</a>
+		Modal.make(window_id, <>Login</>, win_body, win_footer, Modal.default_options)
 	}
 }
